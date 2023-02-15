@@ -14,18 +14,27 @@ ARGV.each do |arg|
     
     # insert result at the right position
     is_inserted = false
-    i = 0
-    l = result.size
-    while !is_inserted && i < l do
-        if result[i] < i_arg
-            i += 1
-        else
-            result.insert(i - 1, i_arg)
-            is_inserted = true
-            break
-        end
+    # i = 0
+    # l = result.size
+    # while !is_inserted && i < l do
+    #     if result[i] < i_arg
+    #         i += 1
+    #     else
+    #         result.insert(i - 1, i_arg)
+    #         is_inserted = true
+    #         break
+    #     end
+    # end
+    # result << i_arg if !is_inserted
+# end
+  result.reverse_each.with_index do |elem, i|
+    if i_arg >= elem
+      result.insert(result.size - i, i_arg)
+      is_inserted = true
+      break
     end
-    result << i_arg if !is_inserted
+  end
+  result << i_arg unless is_inserted
 end
 
 puts result
