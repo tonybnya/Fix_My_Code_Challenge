@@ -13,7 +13,7 @@ class User():
     - password: private string hash in MD5
     """
 
-    _password = None
+    __password = None
 
     def __init__(self):
         """
@@ -27,7 +27,7 @@ class User():
         """
         Password getter
         """
-        return self._password
+        return self.__password
 
     @password.setter
     def password(self, pwd):
@@ -35,26 +35,26 @@ class User():
         Password setter:
         - `None` if `pwd` is `None`
         - `None` if `pwd` is not a string
-        - Hash `pwd` in MD5 before assign to `_password`
+        - Hash `pwd` in MD5 before assign to `__password`
         """
         if pwd is None or type(pwd) is not str:
-            self._password = None
+            self.__password = None
         else:
-            self._password = hashlib.md5(pwd.encode()).hexdigest().lower()
+            self.__password = hashlib.md5(pwd.encode()).hexdigest().lower()
 
     def is_valid_password(self, pwd):
         """
         Valid password:
         - `False` if `pwd` is `None`
         - `False` if `pwd` is not a string
-        - `False` if `_password` is `None`
-        - Compare `_password` and the MD5 value of `pwd`
+        - `False` if `__password` is `None`
+        - Compare `__password` and the MD5 value of `pwd`
         """
         if pwd is None or type(pwd) is not str:
             return False
-        if self._password is None:
+        if self.__password is None:
             return False
-        return hashlib.md5(pwd.encode()).hexdigest().lower() == self._password
+        return hashlib.md5(pwd.encode()).hexdigest().upper() == self.__password
 
 
 if __name__ == '__main__':
