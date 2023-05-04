@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-""" 
-User class
 """
+User class.
+"""
+
 
 class User():
     """ Documentation """
-
     def __init__(self):
         """ Documentation """
         self.__email = None
@@ -21,10 +21,9 @@ class User():
     def email(self):
         """ Documentation """
         return self.__email
-   
-    
-if __name__ == "__main__":
 
+
+if __name__ == "__main__":
     u = User()
     u.email = "john@snow.com"
     print(u.email)
