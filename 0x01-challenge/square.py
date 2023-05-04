@@ -5,6 +5,7 @@ Implementation of a class Square.
 
 
 class Square():
+    """Class Square."""
     width = 0
     height = 0
 
